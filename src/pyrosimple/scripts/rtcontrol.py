@@ -508,11 +508,11 @@ class RtorrentControl(ScriptBaseWithConfig):
             raise  # in --debug mode
 
         if self.options.shell:
-            item_text = b"\t".join(shell_escape(i) for i in item_text.split("\t"))
+            item_text = "\t".join(shell_escape(i) for i in item_text.split("\t"))
 
         # Justify headers according to stencil
         if stencil:
-            item_text = b"\t".join(
+            item_text = "\t".join(
                 i.ljust(len(s)) for i, s in zip(item_text.split("\t"), stencil)
             )
 
@@ -530,8 +530,8 @@ class RtorrentControl(ScriptBaseWithConfig):
 
         # For a header, use configured escape codes on a terminal
         if item is None and os.isatty(sys.stdout.fileno()):
-            item_text = b"".join(
-                (config.output_header_ecma48.encode(), item_text, b"\x1B[0m")
+            item_text = "".join(
+                (config.output_header_ecma48, item_text, "\x1B[0m")
             )
 
         # Set up stdout for writing
@@ -544,11 +544,11 @@ class RtorrentControl(ScriptBaseWithConfig):
             else:
                 self.LOG.info(item_text)
         elif self.options.nul:
-            output.write(item_text + b"\0")
+            output.write(item_text.encode() + b"\0")
         else:
-            output.write(item_text + b"\n")
+            output.write(item_text.encode() + b"\n")
 
-        return item_text.count(b"\n") + 1
+        return item_text.encode().count(b"\n") + 1
 
     # TODO: refactor to formatting.OutputMapping as a class method
     def validate_output_format(self, default_format):

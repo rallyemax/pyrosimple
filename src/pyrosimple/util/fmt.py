@@ -192,10 +192,10 @@ def to_console(text):
     """Return a byte string intended for console output."""
     if isinstance(text, bytes):
         # For now, leave byte strings as-is (ignoring possible display problems)
-        return text
+        return text.decode()
 
     # Convert other stuff into an UTF-8 string
-    return str(text).encode("utf8")
+    return str(text).encode("utf8").decode()
 
 
 def convert_strings_in_iter(obj):
