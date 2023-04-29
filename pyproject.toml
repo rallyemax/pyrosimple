@@ -2,8 +2,8 @@
 name = "pyrosimple"
 version = "1.2.0"
 description = ""
-authors = ["kannibalox <kannibalox@gmail.com>"]
-repository = "https://github.com/kannibalox/pyrosimple"
+authors = ["rallyemax <coloradan@gmail.com>"]
+repository = "https://github.com/rallyemax/pyrosimple"
 readme = "README.md"
 classifiers = [
         "Development Status :: 3 - Alpha",
@@ -38,6 +38,7 @@ lstor = "pyrosimple.scripts.lstor:run"
 chtor = "pyrosimple.scripts.chtor:run"
 mktor = "pyrosimple.scripts.mktor:run"
 pyrotorque = "pyrosimple.scripts.pyrotorque:run"
+pyroadmin = "pyrosimple.scripts.pyroadmin:run"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
